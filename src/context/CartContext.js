@@ -32,17 +32,28 @@ export const CartProvider = ({ children }) => {
     }
   }, [cartItems, isLoaded]);
 
-  const addToCart = (product) => {
+  const addToCart = (item) => {
+    const newItem = {
+      id: item.id || Date.now().toString(),
+      title: item.title,
+      description: item.description || "",
+      harga: item.harga || item.price || 0,
+      harga_akhir: item.harga_akhir || item.price || 0,
+      image: item.image || "",
+      quantity: item.quantity || 1,
+      isCustom: item.isCustom || false,
+    };
+
     setCartItems((prevItems) => {
-      const existingItem = prevItems.find((item) => item.id === product.id);
+      const existingItem = prevItems.find((i) => i.id === newItem.id);
       if (existingItem) {
-        return prevItems.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
+        return prevItems.map((i) =>
+          i.id === newItem.id
+            ? { ...i, quantity: i.quantity + (newItem.quantity || 1) }
+            : i
         );
       }
-      return [...prevItems, { ...product, quantity: 1 }];
+      return [...prevItems, newItem];
     });
   };
 
@@ -62,6 +73,14 @@ export const CartProvider = ({ children }) => {
         )
       );
     }
+  };
+
+  const updateCartItem = (productId, updatedData) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === productId ? { ...item, ...updatedData } : item
+      )
+    );
   };
 
   const clearCart = () => {
@@ -86,6 +105,7 @@ export const CartProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         updateQuantity,
+        updateCartItem,
         clearCart,
         getTotalPrice,
         getTotalItems,

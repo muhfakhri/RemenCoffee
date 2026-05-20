@@ -9,7 +9,7 @@ export default function Document() {
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="Jurusan Menejemen Perkantoran SMKN 1 BANTUL" />
+        <meta name="description" content="" />
         <style dangerouslySetInnerHTML={{__html: `
           .wa_button,
           .wa-button,
