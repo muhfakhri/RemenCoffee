@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
@@ -112,7 +113,15 @@ export default function Checkout() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <>
+      <Head>
+        <title>Checkout - Remen Coffee</title>
+        <meta name="description" content="Selesaikan pembelian Anda di Remen Coffee" />
+        <meta name="robots" content="noindex, nofollow" />
+        <meta property="og:title" content="Checkout - Remen Coffee" />
+        <meta property="og:description" content="Proses checkout pesanan" />
+      </Head>
+      <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <button
@@ -255,6 +264,7 @@ export default function Checkout() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

@@ -35,7 +35,7 @@ const navbar = ({ onCartClick }) => {
 
 	const handleSmoothScroll = (e) => {
 		const href = e.currentTarget.getAttribute("href");
-		if (href.startsWith("#")) {
+		if (href && href.startsWith("#") && href.length > 1) {
 			e.preventDefault();
 			const target = document.querySelector(href);
 			if (target) {
@@ -49,7 +49,7 @@ const navbar = ({ onCartClick }) => {
 		<div>
 			<nav className="bg-white border-gray-200 py-2.5 shadow-lg fixed top-0 inset-x-0 z-50">
 				<div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
-					<a href="#" className="flex items-center">
+					<a href="/" className="flex items-center">
 						<img src="/remen_logo.svg" className="h-14 mr-1 sm:h-14" alt="Logo" />
 						<div className="flex flex-col items-left -space-y-9">
 						

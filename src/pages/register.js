@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useAuth } from "../context/AuthContext";
 import { supabase } from "../supabaseClient";
@@ -54,7 +55,15 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+    <>
+      <Head>
+        <title>Daftar - Remen Coffee</title>
+        <meta name="description" content="Daftar akun baru di Remen Coffee untuk mulai berbelanja kopi premium" />
+        <meta name="robots" content="noindex, nofollow" />
+        <meta property="og:title" content="Daftar - Remen Coffee" />
+        <meta property="og:description" content="Daftar akun baru" />
+      </Head>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="bg-white rounded-lg shadow-md p-8 w-full max-w-md">
         <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">Daftar</h1>
 
@@ -128,6 +137,7 @@ export default function Register() {
           </p>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
