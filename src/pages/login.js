@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import { supabase } from "../supabaseClient";
 
@@ -58,8 +59,49 @@ export default function Login() {
         <meta property="og:title" content="Login - Remen Coffee" />
         <meta property="og:description" content="Masuk ke akun Anda" />
       </Head>
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="bg-white rounded-lg shadow-md p-8 w-full max-w-md">
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center px-4 relative overflow-hidden">
+        {/* Floating Logo Background */}
+        {[...Array(10)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute opacity-15 pointer-events-none"
+            initial={{
+              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 0),
+              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 0),
+            }}
+            animate={{
+              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 0),
+              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 0),
+            }}
+            transition={{
+              duration: 8 + i * 2,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            style={{
+              width: 120 + i * 50,
+              height: 120 + i * 50,
+            }}
+          >
+            <img
+              src="/logo_remen.png"
+              alt="Remen Coffee Logo"
+              className="w-full h-full object-contain"
+            />
+          </motion.div>
+        ))}
+        
+      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md relative z-10">
+        {/* Back Button */}
+        <button
+          onClick={() => router.back()}
+          className="absolute top-4 left-4 text-gray-600 hover:text-gray-800 transition duration-200 flex items-center gap-1 text-sm font-medium"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          Kembali
+        </button>
         <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">Login</h1>
 
         {error && (
@@ -111,7 +153,7 @@ export default function Login() {
             Belum punya akun?{" "}
             <button
               onClick={() => router.push("/register")}
-              className="text-logo-color hover:text-logo-color/80 font-semibold"
+              className="text-logo-color hover:text-logo-color/80 font-semibold transition duration-200"
             >
               Daftar di sini
             </button>
