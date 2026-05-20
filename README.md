@@ -21,10 +21,10 @@ See LICENSE file for details.
 
 ## 📞 Kontak
 
-- **Email**: support@remencoffee.com
-- **WhatsApp**: [Add your number]
-- **Instagram**: [@remencoffee]
-- **Website**: https://remen-coffee.com
+- **Email**: 
+- **WhatsApp**: 
+- **Instagram**: 
+- **Website**: 
 
 ---
 
